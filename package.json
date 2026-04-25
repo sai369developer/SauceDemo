@@ -12,7 +12,9 @@
     "test:qa": "playwright test",
     "test:prod": "playwright test",
     "test:headed": "playwright test --headed",
+    "test:headed:slow": "set SLOW_MO_MS=700&& playwright test --headed",
     "test:debug": "playwright test --debug",
+    "test:debug:slow": "set SLOW_MO_MS=700&& playwright test --debug",
     "report:playwright": "playwright show-report reports/playwright-html",
     "report:allure:generate": "allure generate allure-results --clean -o reports/allure-report",
     "report:allure:open": "allure open reports/allure-report"

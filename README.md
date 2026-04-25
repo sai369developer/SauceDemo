@@ -124,7 +124,29 @@ Debug locally:
 
 ```bash
 npm run test:headed
+npm run test:headed:slow
 npm run test:debug
+npm run test:debug:slow
+```
+
+Control browser speed:
+
+```powershell
+npm run test:headed:slow
+```
+
+`test:headed:slow` opens the browser and slows each browser action by `700ms`. This is useful when you are learning because you can clearly see each click, fill, and navigation.
+
+For custom speed in PowerShell:
+
+```powershell
+$env:SLOW_MO_MS='1000'; npm run test:headed
+```
+
+Use a smaller number like `300` for slightly slower runs, or a bigger number like `1000` when you want to watch every action carefully. Keep normal CI and regression runs fast with:
+
+```powershell
+npm test
 ```
 
 You can also override the environment directly:

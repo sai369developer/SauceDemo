@@ -5,6 +5,21 @@
 import { defineConfig, devices } from '@playwright/test';
 import { config } from './config/config';
 
+function readSlowMo(): number {
+  // SLOW_MO_MS is optional.
+  // Example: SLOW_MO_MS=500 means Playwright waits 500ms after each browser action.
+  const slowMoValue = process.env.SLOW_MO_MS ?? '0';
+  const slowMo = Number(slowMoValue);
+
+  if (!Number.isInteger(slowMo) || slowMo < 0) {
+    throw new Error(`SLOW_MO_MS must be a positive whole number. Received: ${slowMoValue}`);
+  }
+
+  return slowMo;
+}
+
+const slowMo = readSlowMo();
+
 export default defineConfig({
   // Folder where Playwright looks for all test files.
   // In this framework, tests are grouped by feature under the tests/ folder.
@@ -33,8 +48,9 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
 
   // Uses fewer workers in CI for stability.
-  // Locally, Playwright decides the best worker count automatically.
-  workers: process.env.CI ? 1 : undefined,
+  // Also uses 1 worker when slow motion is enabled so you can watch one browser flow clearly.
+  // Locally without slow motion, Playwright decides the best worker count automatically.
+  workers: process.env.CI || slowMo > 0 ? 1 : undefined,
 
   // Folder where Playwright stores raw failure artifacts such as screenshots, traces, and videos.
   outputDir: 'reports/test-results',
@@ -76,7 +92,14 @@ export default defineConfig({
     actionTimeout: 10_000,
 
     // Maximum time for page navigation such as page.goto or redirects after login.
-    navigationTimeout: 15_000
+    navigationTimeout: 15_000,
+
+    // Slows down each browser action when SLOW_MO_MS is set.
+    // This is useful for learning and debugging because you can watch clicks, typing, and navigation.
+    // Keep this at 0 for normal fast automation runs.
+    launchOptions: {
+      slowMo
+    }
   },
 
   // Projects define which browsers/devices the suite runs against.
