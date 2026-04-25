@@ -1,0 +1,2 @@
+Purpose: Keeps the screenshots folder in source control before runtime screenshots exist.
+Why used: The framework has a predictable place for manual or future screenshot artifacts.

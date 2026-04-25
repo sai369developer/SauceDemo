@@ -1,0 +1,2 @@
+Purpose: Keeps the test-files folder in source control before upload/download fixtures exist.
+Why used: Future tests can store sample files in an already documented location.

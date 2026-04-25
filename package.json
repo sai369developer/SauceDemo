@@ -1,0 +1,38 @@
+{
+  "name": "sauce-demo-playwright-framework",
+  "version": "1.0.0",
+  "description": "Professional beginner-friendly Playwright TypeScript automation framework for Sauce Demo.",
+  "private": true,
+  "scripts": {
+    "install:browsers": "playwright install chromium",
+    "typecheck": "tsc --noEmit",
+    "test:list": "playwright test --list",
+    "test": "playwright test",
+    "test:dev": "playwright test",
+    "test:qa": "playwright test",
+    "test:prod": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report:playwright": "playwright show-report reports/playwright-html",
+    "report:allure:generate": "allure generate allure-results --clean -o reports/allure-report",
+    "report:allure:open": "allure open reports/allure-report"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.3",
+    "allure-commandline": "^2.34.1",
+    "allure-playwright": "^3.2.1",
+    "dotenv": "^16.5.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencyPurpose": {
+    "@faker-js/faker": "Generates realistic dynamic test data such as names, emails, passwords, and postal codes.",
+    "@playwright/test": "Provides the Playwright test runner, browser automation APIs, assertions, fixtures, and reporting hooks.",
+    "@types/node": "Adds TypeScript types for Node.js globals used in config files, such as process.env and path handling.",
+    "allure-commandline": "Generates and opens the final Allure HTML report from the raw allure-results output.",
+    "allure-playwright": "Connects Playwright test execution to Allure so steps, failures, screenshots, and attachments appear in Allure reports.",
+    "dotenv": "Loads environment variables from dev.env, qa.env, and prod.env files into process.env.",
+    "typescript": "Adds static typing so framework code is easier to maintain and safer to refactor."
+  }
+}
