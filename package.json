@@ -32,7 +32,7 @@
     "@faker-js/faker": "Generates realistic dynamic test data such as names, emails, passwords, and postal codes.",
     "@playwright/test": "Provides the Playwright test runner, browser automation APIs, assertions, fixtures, and reporting hooks.",
     "@types/node": "Adds TypeScript types for Node.js globals used in config files, such as process.env and path handling.",
-    "allure-commandline": "Generates and opens the final Allure HTML report from the raw allure-results output.",
+    "allure-commandline": "Generates and opens the final Allure HTML report from the raw allure-results output. It requires Java to be installed and available in PATH.",
     "allure-playwright": "Connects Playwright test execution to Allure so steps, failures, screenshots, and attachments appear in Allure reports.",
     "dotenv": "Loads environment variables from dev.env, qa.env, and prod.env files into process.env.",
     "typescript": "Adds static typing so framework code is easier to maintain and safer to refactor."

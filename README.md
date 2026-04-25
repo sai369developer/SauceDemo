@@ -102,7 +102,7 @@ npm install -D allure-playwright allure-commandline
 | `dotenv` | Loads `dev.env`, `qa.env`, and `prod.env` values into `process.env`. |
 | `@faker-js/faker` | Generates dynamic test data such as names, emails, passwords, and postal codes. |
 | `allure-playwright` | Sends Playwright steps, failures, screenshots, and attachments to Allure. |
-| `allure-commandline` | Generates and opens the final Allure HTML report. |
+| `allure-commandline` | Generates and opens the final Allure HTML report. Requires Java installed and available in `PATH`. |
 
 ## Run Tests
 
@@ -419,6 +419,27 @@ Allure is configured as a Playwright reporter:
 
 ```ts
 ['allure-playwright', { outputFolder: 'allure-results' }]
+```
+
+Allure commandline needs Java. If this command fails:
+
+```powershell
+npm run report:allure:generate
+```
+
+with this error:
+
+```text
+JAVA_HOME is not set and no 'java' command could be found in your PATH.
+```
+
+install a Java JDK first, then restart the terminal.
+
+Check Java:
+
+```powershell
+java -version
+echo $env:JAVA_HOME
 ```
 
 Run tests:
